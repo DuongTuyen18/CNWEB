@@ -441,6 +441,7 @@ document.querySelector('#Pay').onclick = function () {
                          var json_xl = JSON.parse(content);
                          if (json_xl.Data.status == "OK") {
                               //Hàm xử lý
+                              Payment();
                               window.location.reload(true);
                          } else {
                               alert(json_xl.Data.message);
@@ -449,7 +450,6 @@ document.querySelector('#Pay').onclick = function () {
                     }
                }
                xhr.send(form);
-               Payment();
           }
      }
      else {
