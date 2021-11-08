@@ -22,8 +22,6 @@ namespace WebShop.Models
 
         public int? transaction_id { get; set; }
 
-        public virtual PRODUCT PRODUCT { get; set; }
-
         public virtual TRANSACTION TRANSACTION { get; set; }
     }
 }
