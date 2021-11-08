@@ -330,52 +330,49 @@
                         <h2 class="section-header__title text-center h2"><span>Sản phẩm bán chạy</span></h2>
                         <p class="sub-heading">Những sản phẩm bán chạy nhất của hệ thống, xu hướng thời trang đang được ưa chuộng nhất!!</p>
                     </header>
-                    <div class="productPageSlider">
+                    <div class="productSlider-style2 grid-products">
                         @{
-                            int[] popular = new int[ViewBag.qty];
-                            int i = 0;
+                            int[] populartest = new int[ViewBag.qty];
+                            populartest[0] = 0;
+                            int s = 0;
                             foreach (var a in Model)
                             {
-                                popular[i] = a.sold;
-                                i++;
+                                populartest[s] = a.sold;
+                                s++;
                             }
-
-                            for (int x = 0; x < 6; x++)
+                            for (int j = 0; j < 3; j++)
                             {
-                                int biggest = popular[0];
-                                int k = 0;
-                                for (int j = 0; j < ViewBag.qty; j++)
+                                int biggest = populartest[0];
+                                int biggest_index = 0;
+                                for (int k = 0; k < populartest.Length; k++)
                                 {
-                                    if (popular[j] > biggest)
+                                    if (populartest[k] > biggest)
                                     {
-                                        k = j;
-                                        biggest = popular[j];
+                                        biggest_index = k;
+                                        biggest = populartest[k];
                                     }
                                 }
                                 foreach (var a in Model)
                                 {
-                                    if (a.product_id == (k + 1))
+                                    if (a.sold == populartest[biggest_index])
                                     {
                                         <div class="col-12 item">
                                             <!-- start product image -->
                                             <div class="product-image">
                                                 <!-- start product image -->
-                                                <a href="~/Sales/ProductSales/Product_Detail/@a.product_id">
+                                                <a href="~/Sales/ProductSales/Product_Detail/@a.product_id" class="grid-view-item__link">
                                                     <!-- image -->
-                                                    <img class="primary blur-up lazyload" data-src="@a.image_link.ToString()" src="@a.image_link.ToString()" alt="image" title="product">
+                                                    <img class="primary blur-up lazyload" data-src="@a.image_link" src="@a.image_link" alt="image" title="product">
                                                     <!-- End image -->
                                                     <!-- Hover image -->
-                                                    <img class="hover blur-up lazyload" data-src="@a.image_link.ToString()" src="@a.image_link.ToString()" alt="image" title="product">
+                                                    <img class="hover blur-up lazyload" data-src="@a.image_link" src="@a.image_link" alt="image" title="product">
                                                     <!-- End hover image -->
-                                                    <!-- product label -->
-                                                    <div class="product-labels rectangular"><span class="lbl on-sale">-@a.percent%</span> <span class="lbl pr-label1">new</span></div>
-                                                    <!-- End product label -->
                                                 </a>
                                                 <!-- end product image -->
                                                 <!-- Start product button -->
-                                                <form class="variants add" onclick="Add_to_Cart(@ViewBag.is_logined, @a.product_id);">
+                                                <div class="variants add" onclick="Add_to_Cart('@ViewBag.is_logined', @a.product_id);">
                                                     <button class="btn btn-addto-cart" type="button" tabindex="0">Thêm vào giỏ hàng</button>
-                                                </form>
+                                                </div>
                                                 <!-- end product button -->
                                             </div>
                                             <!-- end product image -->
@@ -388,27 +385,17 @@
                                                 <!-- End product name -->
                                                 <!-- product price -->
                                                 <div class="product-price">
-                                                    <span class="old-price">$500.00</span>
                                                     <span class="price">@a.price VND</span>
                                                 </div>
                                                 <!-- End product price -->
-
-                                                <div class="product-review">
-                                                    <i class="font-13 fa fa-star"></i>
-                                                    <i class="font-13 fa fa-star"></i>
-                                                    <i class="font-13 fa fa-star"></i>
-                                                    <i class="font-13 fa fa-star-o"></i>
-                                                    <i class="font-13 fa fa-star-o"></i>
-                                                </div>
                                             </div>
                                             <!-- End product details -->
                                         </div>
                                     }
                                 }
-                                popular[k] = 0;
+                                populartest[biggest_index] = 0;
                             }
                         }
-
                     </div>
                 </div>
                 <!--End Related Product Slider-->
