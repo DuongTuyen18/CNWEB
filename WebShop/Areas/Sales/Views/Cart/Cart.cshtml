@@ -38,7 +38,7 @@
                                                   foreach (var a in Model)
                                                   {
                                                        <div class="cart_item_show">
-                                                       <tr id="item_@a.product_id@a.size"class="cart__row border-bottom line1 cart-flex border-top">
+                                                       <tr id="item_@a.product_id@a.size" class="cart__row border-bottom line1 cart-flex border-top">
                                                             <td class="cart__image-wrapper cart-flex-item">
                                                                  <a href="~/Sales/ProductSales/Product_Detail/@a.product_id"><img class="cart__image" src="@a.image_link.ToString()" alt="Elastic Waist Dress - Navy / Small"></a>
                                                             </td>
@@ -71,7 +71,7 @@
                                                             </td>
                                                             @*remove button*@
                                                             @*<td class="text-center small--hide"><a href="~/Sales/Cart/Remove_Item/@a.product_id" class="btn btn--secondary cart__remove" title="Remove tem"><i id="remove_button_id" class="icon icon anm anm-times-l"></i></a></td>*@
-                                                            <td class="text-center small--hide"><a  onclick="removeItem(@a.product_id,'@a.size')" class="btn btn--secondary cart__remove" title="Remove tem"><i id="remove_button_id" class="icon icon anm anm-times-l"></i></a></td>
+                                                            <td class="text-center small--hide"><a onclick="removeItem(@a.product_id,'@a.size')" class="btn btn--secondary cart__remove" title="Remove tem"><i id="remove_button_id" class="icon icon anm anm-times-l"></i></a></td>
                                                        </tr>
                                    </div>
                               }
@@ -163,6 +163,11 @@
                                                                       <label>Số điện thoại</label>
                                                                       <input type="number" class="numberphone">
                                                                  </div>
+                                                                 <div class="form-group">
+                                                                      @*<label for="address_zip">Địa chỉ cụ thể (Số nhà, đường,..)</label>*@
+                                                                      <label>Địa chỉ nhận hàng</label>
+                                                                      <input type="text" class="address">
+                                                                 </div>
                                                             </form>
                                                        </div>
 
@@ -209,10 +214,10 @@
                                         </div>
                                    </div>
                               </div>
-          <p id="hiden_text" style="display:none">@ViewBag.Number</p>
+                              <p id="hiden_text" style="display:none">@ViewBag.Number</p>
                               </div>
                               <!--End Body Content-->
-<script>
+                              <script>
     window.onload = function () {
         const AllTotal = document.querySelectorAll('#total_money');
         const AllBuy = $('.AllBuy');
@@ -421,10 +426,12 @@ document.querySelector('#Pay').onclick = function () {
                //Sử dụng Ajax truyền dữ liệu
                const usename = $('.usename').val();
                const numberphone = $('.numberphone').val();
+               const address = $('.address').val();
 
                var form = new FormData();
                form.append("usename", usename);
                form.append("numberphone", numberphone);
+               form.append("address", address);
                form.append("amount", amount);
                var xhr = new XMLHttpRequest();
                xhr.open("POST", '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port/Sales/ProductSales/SaveInfomationUser', true);
@@ -477,11 +484,11 @@ document.querySelector('#Pay').onclick = function () {
          xhr.send(form);
     }
 
-</script>
-     }
-     else
-     {
-          <h1>Bạn chưa đăng nhập, không thể xem thông tin giỏ hàng</h1>
-          <a href="~/Sales/Login/Login">Đăng nhập ngay</a>
-     }
+                              </script>
+                         }
+                         else
+                         {
+                              <h1>Bạn chưa đăng nhập, không thể xem thông tin giỏ hàng</h1>
+                              <a href="~/Sales/Login/Login">Đăng nhập ngay</a>
+                         }
 }
