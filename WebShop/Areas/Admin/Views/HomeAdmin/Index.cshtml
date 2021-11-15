@@ -174,17 +174,24 @@
                                     <tbody>
                                         @foreach (var item in (List<WebShop.Models.PRODUCT>)ViewBag.TopProduct)
                                         {
-                                            <tr>
-                                                <td>@item.product_id</td>
-                                                <td>@item.name</td>
-                                                @foreach (KeyValuePair<int, string> cate in (Dictionary<int, string>)ViewData["Category"])
+                                        <tr>
+                                            <td>@item.product_id</td>
+                                            <td>@item.name</td>
+                                            @foreach (KeyValuePair<int, string> cate in (Dictionary<int, string>)ViewData["Category"])
+                                            {
+                                                if (@cate.Key == item.category_id)
                                                 {
-                                                    if (@cate.Key == item.category_id)
-                                                    {
-                                                        <td id="category @item.product_id">@cate.Value</td>
-                                                    }
+                                                    <td id="category @item.product_id">@cate.Value</td>
                                                 }
-                                                <td>@item.brand_id</td>
+                                            }
+                                            
+                                                @foreach (KeyValuePair<int, string> brand in (Dictionary<int, string>)ViewBag.Brand)
+                                                {
+                                                    if (@brand.Key == item.brand_id)
+                                                    {
+                                                    <td id="brand @item.product_id">@brand.Value</td>
+                                                }
+                                            }
                                                 <td class="text-right">@item.sold</td>
                                                 <td class="text-right">@item.price VNĐ</td>
                                             </tr>

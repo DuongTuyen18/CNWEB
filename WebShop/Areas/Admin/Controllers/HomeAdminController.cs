@@ -50,6 +50,14 @@ namespace WebShop.Areas.Admin.Controllers
             }
             ViewBag.Category = p;
 
+            var brand = db.BRANDs.ToList();
+            Dictionary<int, string> p1 = new Dictionary<int, string>();
+            foreach (var i in brand)
+            {
+                p1.Add(i.brand_id, i.brand_name);
+            }
+            ViewBag.Brand = p1;
+
             var topmem = db.Database.SqlQuery<Mem_Cart>("exec SelectTopMember").ToList();
             ViewBag.TopMem = topmem;
             return View();
