@@ -17,18 +17,19 @@ namespace WebShop.Areas.Admin.Controllers
             ViewBag.is_logined = Session["is_logined"];
 
             var mem = db.MEMBERs.ToList();
-            var order = db.TRANSACTIONs.ToList();
+            var order = db.Database.SqlQuery<TRANSACTION>("SelectFinishTransaction").ToList();
             var item = db.ITEM_SOLD.ToList();
             //  Số lượng thành viên
             ViewBag.Member_count = mem.Count();
             //  Tổng số đơn hàng
             ViewBag.Order_count = order.Count();
             int qty = 0, total = 0;
+
             foreach(var o in order)
             {
-                total += o.amount;
-                
+                total += o.amount;                
             }
+            
             foreach (var o in item)
             {
                 qty += o.qty;

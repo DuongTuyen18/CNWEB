@@ -449,7 +449,6 @@
     <Content Include="Asset\assets\js\vendor\photoswipe-ui-default.min.js" />
     <Content Include="Asset\assets\js\vendor\photoswipe.min.js" />
     <Content Include="Asset\assets\js\vendor\wow.min.js" />
-    <Content Include="Asset\Images\a843c75d34054bc976c1d318c219ebc2.jpg" />
     <Content Include="Asset\Images\giay1.jpg" />
     <Content Include="Asset\Images\giay2.jpg" />
     <Content Include="Asset\Images\d1.jpg" />
@@ -464,7 +463,6 @@
     <Content Include="Asset\Images\d8.jpg" />
     <Content Include="Asset\Images\d9.jpg" />
     <Content Include="Asset\Images\logo-1.jpg" />
-    <Content Include="Asset\Images\RWG2eG.jpg" />
     <Content Include="Asset\Images\tl1.jpg" />
     <Content Include="Asset\Images\tl2.jpg" />
     <Content Include="Asset\Images\tui1.jpg" />

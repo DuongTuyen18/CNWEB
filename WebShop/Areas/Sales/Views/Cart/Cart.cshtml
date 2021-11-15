@@ -176,22 +176,17 @@
                                                                  <div class="row border-bottom pb-2">
                                                                       <span class="col-12 col-sm-6 cart__subtotal-title">Tiền sản phẩm</span>
                                                                       @{
-                                                                           int total_bef = 0;
-                                                                           int chietkhau = 0;
+                                                                           int total_bef = 0;                                                                          
                                                                            int total = 0;
                                                                            foreach (var a in Model)
                                                                            {
                                                                                 total_bef = total_bef + a.price;
                                                                            }
-                                                                           chietkhau = total_bef / 10;
-                                                                           total = total_bef + chietkhau;
+                                                                           
+                                                                           total = total_bef;
                                                                       }
                                                                       <span class="col-12 col-sm-6 text-right"><span class="money">@total_bef VND</span></span>
-                                                                 </div>
-                                                                 <div class="row border-bottom pb-2 pt-2">
-                                                                      <span class="col-12 col-sm-6 cart__subtotal-title">Chiết khấu</span>
-                                                                      <span class="col-12 col-sm-6 text-right">@chietkhau VND</span>
-                                                                 </div>
+                                                                 </div>                                                                
                                                                  <div class="row border-bottom pb-2 pt-2">
                                                                       <span class="col-12 col-sm-6 cart__subtotal-title">Giao hàng</span>
                                                                       <span class="col-12 col-sm-6 text-right">Miễn phí</span>
