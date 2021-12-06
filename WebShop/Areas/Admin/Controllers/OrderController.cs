@@ -24,6 +24,9 @@ namespace WebShop.Areas.Admin.Controllers
             var result = db.TRANSACTIONs.SqlQuery("GetTransaction @tran_id", tran_id).ToList();
             var product = db.Database.SqlQuery<Order_Products>("GetProductInTransaction @tran_id_2", tran_id_2).ToList();
             ViewBag.Product_List = product;
+            var member_id = new SqlParameter("@member_id", result[0].member_id);
+            var user = db.MEMBERs.SqlQuery("get_MEMBER_from_member_id @member_id", member_id).ToList();
+            ViewBag.Email = user[0].username;
             return View(result);
         }
 
@@ -31,7 +34,7 @@ namespace WebShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult AddReport(string tran_id, string amount, string employee_id, string date, string status)
         {
-            //  Báo cáo hoàn thành đơn hàng đồng thời chuyển trạng thái đơn hàng thành Đã giao hàng
+            //  Báo cáo hoàn thành đơn hàng đồng thời chuyển trạng thái đơn hàng 
             var tran_id_var = new SqlParameter("@tran_id", int.Parse(tran_id));
             var tran_id1 = new SqlParameter("@tran_id1", int.Parse(tran_id));
             var employee_id_var = new SqlParameter("@employee_id", int.Parse(employee_id));
@@ -48,9 +51,12 @@ namespace WebShop.Areas.Admin.Controllers
                 db.Database.ExecuteSqlCommand("UpdateTransactionStatus @tran_id, @status1", tran_id_var, status_var1);
                 return View("~/Areas/Admin/Views/Order/Index.cshtml", result1);
             }
-
-            db.Database.ExecuteSqlCommand("AddReport @tran_id, @employee_id,  @amount, @date, @status",
-                                                    tran_id_var, employee_id_var, amount_var, date_var, status_var);
+            else
+            {
+                db.Database.ExecuteSqlCommand("UpdateTransactionStatus @tran_id, @status1", tran_id_var, status_var1);
+                db.Database.ExecuteSqlCommand("AddReport @tran_id, @employee_id,  @amount, @date, @status",
+                                                  tran_id_var, employee_id_var, amount_var, date_var, status_var);
+            }           
 
             return View("~/Areas/Admin/Views/Order/Index.cshtml", result1);
         }
