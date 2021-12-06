@@ -92,56 +92,8 @@
                                         <div class="container mt-4">
                                              <form method="post" action="">
                                                   <div class="row">
-                                                       <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
-                                                            <form action="#" method="post">
-                                                                 <div class="card-body">
-                                                                      <fieldset>
-                                                                           <div class="row">
-                                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                                     <label for="input-cardname">Tên chủ thẻ <span class="required-f">*</span></label>
-                                                                                     <input name="cardname" value="" placeholder="Tên chủ thẻ" id="input-cardname" class="form-control" type="text">
-                                                                                </div>
-                                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                                     <label for="input-country">Loại thẻ<span class="required-f">*</span></label>
-                                                                                     <select name="country_id" class="form-control">
-                                                                                          <option value=""> Chọn loại thẻ </option>
-                                                                                          <option value="1">Thẻ tín dụng</option>
-                                                                                          <option value="2">Thẻ visa</option>
-                                                                                          <option value="3">Thẻ ngân hàng</option>
-                                                                                     </select>
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="row">
-                                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                                     <label for="input-cardno">Số thẻ  <span class="required-f">*</span></label>
-                                                                                     <input name="cardno" value="" placeholder="Số thẻ" id="input-cardno" class="form-control" type="text">
-                                                                                </div>
-                                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                                     <label for="input-cvv">Mã OTP<span class="required-f">*</span></label>
-                                                                                     <input name="cvv" value="" placeholder="Nhập mã OTP" id="input-cvv" class="form-control" type="text">
-                                                                                </div>
-                                                                           </div>
-                                                                           <div class="row">
-                                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                                     <input type="button" class="btn btn-secondary btn--small  small--hide" value="Nhận mã OTP" />
-                                                                                </div>
-                                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                                     <img class="padding-25px-top xs-padding-5px-top" src="/Asset/assets/images/payment-img.jpg" alt="card" title="card" />
-                                                                                </div>
-                                                                           </div>
-                                                                      </fieldset>
-                                                                 </div>
-                                                            </form>
+                                                       <div class="col-12 col-sm-12 col-md-2 col-lg-2 mb-2">
 
-                                                            @*                        <h5>Phương thức thanh toán</h5>
-                                                                 <form action="#" method="post">
-                                                                     <div class="form-group">
-                                                                         <label for="address_zip">Chọn phương thức thanh toán </label>
-                                                                         <input type="button" name="coupon">
-                                                                         <p>  </p>
-                                                                         <input type="button" name="coupon">
-                                                                     </div>
-                                                                 </form>*@
                                                        </div>
 
                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
@@ -150,43 +102,36 @@
                                                                  <div class="form-group">
                                                                       <label>Người nhận</label>
                                                                       <input type="text" class="usename">
-                                                                      @*<select id="address_country" name="address[country]" data-default="United States">
-                                                                                <option value="HaNoi" data-provinces="[]">Hà Nội</option>
-                                                                                <option value="---" data-provinces="[]">---</option>
-                                                                                <option value="HoChiMinh" data-provinces="[]">Hồ Chí Minh</option>
-                                                                                <option value="HaTinh" data-provinces="[]">Hà Tĩnh</option>
-                                                                                <option value="TuyenQuang" data-provinces="[]">Tuyên Quang</option>
-                                                                           </select>*@
                                                                  </div>
                                                                  <div class="form-group">
-                                                                      @*<label for="address_zip">Địa chỉ cụ thể (Số nhà, đường,..)</label>*@
                                                                       <label>Số điện thoại</label>
                                                                       <input type="number" class="numberphone">
                                                                  </div>
                                                                  <div class="form-group">
-                                                                      @*<label for="address_zip">Địa chỉ cụ thể (Số nhà, đường,..)</label>*@
                                                                       <label>Địa chỉ nhận hàng</label>
                                                                       <input type="text" class="address">
                                                                  </div>
                                                             </form>
                                                        </div>
+                                                       <div class="col-12 col-sm-12 col-md-2 col-lg-2 mb-2">
 
+                                                       </div>
                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
                                                             <div class="solid-border">
                                                                  <div class="row border-bottom pb-2">
                                                                       <span class="col-12 col-sm-6 cart__subtotal-title">Tiền sản phẩm</span>
                                                                       @{
-                                                                           int total_bef = 0;                                                                          
+                                                                           int total_bef = 0;
                                                                            int total = 0;
                                                                            foreach (var a in Model)
                                                                            {
                                                                                 total_bef = total_bef + a.price;
                                                                            }
-                                                                           
+
                                                                            total = total_bef;
                                                                       }
                                                                       <span class="col-12 col-sm-6 text-right"><span class="money">@total_bef VND</span></span>
-                                                                 </div>                                                                
+                                                                 </div>
                                                                  <div class="row border-bottom pb-2 pt-2">
                                                                       <span class="col-12 col-sm-6 cart__subtotal-title">Giao hàng</span>
                                                                       <span class="col-12 col-sm-6 text-right">Miễn phí</span>

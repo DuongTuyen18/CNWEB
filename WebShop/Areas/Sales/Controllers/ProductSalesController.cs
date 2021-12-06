@@ -292,7 +292,7 @@ namespace WebShop.Areas.Sales.Controllers
           {
                ViewBag.user_logined = Session["user_logined"];
                ViewBag.is_logined = Session["is_logined"];
-               var brand_var = new SqlParameter("@brand", id);
+               var brand_var = new SqlParameter("@brand", Int32.Parse(id));
                List<PRODUCT> productlist = new List<PRODUCT>();
                List<PRODUCT_Plus> productpluslist = new List<PRODUCT_Plus>();
                var result = db.Database.SqlQuery<PRODUCT>("exec get_product_base_on_brand @brand", brand_var).ToList();
