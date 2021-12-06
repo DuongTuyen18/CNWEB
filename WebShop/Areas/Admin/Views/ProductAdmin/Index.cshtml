@@ -3,7 +3,21 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+    <style>
+     
+        .text_more::-webkit-scrollbar {
+            width: 6px;
+        }
 
+        .text_more::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .text_more::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 1px solid slategrey;
+        }
+    </style>
 @{
     if (ViewBag.is_logined == 1)
     {
@@ -158,12 +172,12 @@
                                         <td id="brand @item.product_id">@item.brand_id</td>
                                         <td id="size @item.product_id">@item.size</td>
                                         <td id="price @item.product_id">@item.price</td>
-                                        <td id="content @item.product_id" >
-                                            <p class="text_more_@item.product_id" style="height: 66px; overflow: hidden; text-overflow: ellipsis; box-sizing:border-box; margin:0; padding:0 ">
+                                        <td id="content @item.product_id">
+                                            <p class="text_more" style="height: 120px; overflow-y: auto; box-sizing:border-box; margin:0; padding:0 ">
                                                 @item.content
                                             </p>
                                            
-                                            <a class="click_show_more_@item.product_id" onclick="ClickShow(@item.product_id)" style="font-size:14px; color:blue; cursor:pointer">Xem thêm</a>
+                                           @* <a class="click_show_more_@item.product_id" onclick="ClickShow(@item.product_id)" style="font-size:14px; color:blue; cursor:pointer">Xem thêm</a>*@
                                         </td>
                                         <td>@item.sold</td>
                                         <td id="sale @item.product_id">@item.sale_id</td>
@@ -267,12 +281,12 @@
 }
 
 <script>
-    function ClickShow(id) {
+    @*function ClickShow(id) {
         const temp = ".text_more_" + id.toString();
         const temp2 = ".click_show_more_" + id.toString();
         $(temp).css("overflow", "visible");
         $(temp2).css("display", "none");
-    }
+    }*@
 
     function PreviewImage() {
         var oFReader = new FileReader();
