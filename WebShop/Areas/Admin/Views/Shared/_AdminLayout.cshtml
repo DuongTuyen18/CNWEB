@@ -23,7 +23,6 @@
     <link href="~/Asset/admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="~/Asset/admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="~/Asset/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-
     <link href="~/Asset/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="~/Asset/admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="~/Asset/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
@@ -53,20 +52,20 @@
        
         <div class="animated d-flex">
             <div class="container-fluid">
-                <div class="row align-items-center">                   
+                <div class="row align-items-center">
                     <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                         <a href="~/Admin/HomeAdmin/Index">
-                            <img src="/Asset/assets/images/logo.jpg" alt="" title="" style="height:40px"/>
+                            <img src="/Asset/assets/images/logo.jpg" alt="" title="" style="height:40px" />
                         </a>
-                    </div>                   
+                    </div>
                     <div class="col-2 col-sm-3 col-md-3 col-lg-8">
                         <div class="d-block d-lg-none">
                             <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
                                 <i class="icon anm anm-times-l"></i>
                                 <i class="anm anm-bars-r"></i>
                             </button>
-                        </div>                       
-                        <nav class="grid__item" id="AccessibleNav" role="navigation">                            
+                        </div>
+                        <nav class="grid__item" id="AccessibleNav" role="navigation">
                             <ul id="siteNav" class="site-nav medium center hidearrow">
                                 <li class="lvl1 parent megamenu">
                                     <a href="~/Admin/HomeAdmin" id="1">Trang chủ <i class="anm anm-angle-down-l"></i></a>
@@ -87,52 +86,60 @@
                                     <a href="~/Admin/CartShop">Bán hàng<i class="anm anm-angle-down-l"></i></a>
                                 </li>
                             </ul>
-                        </nav>                        
+                        </nav>
                     </div>
-                    <div class="col-2 col-sm-3 col-md-3 col-lg-2 d-none d-lg-block">
-                        <div class="account-wrap">
-                            <div class="account-item account-item--style2 clearfix js-item-menu">
-                                <div class="image">
-                                    <img src="/Asset/admin/images/icon/avatar-01.jpg" alt="Admin" />
-                                </div>
-                                <div class="content">
-                                    <a class="js-acc-btn" href="#">Admin</a>
-                                </div>
-                                <div class="account-dropdown js-dropdown" style="z-index:300">
-                                    <div class="info clearfix">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="/Asset/admin/images/icon/avatar-01.jpg" alt="Admin" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="name">
-                                                <a href="#">Admin</a>
-                                            </h5>
-                                            <span class="email">admin@admin.com</span>
-                                        </div>
+                    @{
+                        string user_role = "";
+                        string user_name = Session["user_name"].ToString();
+                        string user_gmail = Session["user_gmail"].ToString(); ;
+                        if (Session["group_id"].ToString() == "ADMIN")
+                        {
+                            user_role = "Quản trị viên";
+                            user_name = "Quản trị viên";
+                        }
+                        else if (Session["group_id"].ToString() == "EMPLOYEE")
+                        {
+                            user_role = "Nhân viên";
+                        }
+                        <div class="col-2 col-sm-3 col-md-3 col-lg-2 d-none d-lg-block">
+                            <div class="account-wrap">
+                                <div class="account-item account-item--style2 clearfix js-item-menu">
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">Xin chào @user_name</a>
                                     </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Tai khoan
+                                    <div class="account-dropdown js-dropdown" style="z-index:300">
+                                        <div class="info clearfix">
+                                            <div class="content">
+                                                <h5 class="name">
+                                                    <a href="#">@user_role</a>
+                                                </h5>
+                                                <span class="email">@user_gmail</span>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__body">
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-account"></i>Tài khoản
+                                                </a>
+                                            </div>
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-settings"></i>Cài đặt
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__footer">
+                                            <a href="~/Sales/Login/Logout">
+                                                <i class="zmdi zmdi-power"></i>Đăng xuất
                                             </a>
                                         </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Cai dat
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__footer">
-                                        <a href="~/Sales/Login/Logout">
-                                            <i class="zmdi zmdi-power"></i>Dang xuat
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
+
+
                 </div>
             </div>
         </div>
