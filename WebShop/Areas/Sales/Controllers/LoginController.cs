@@ -60,6 +60,9 @@ namespace WebShop.Areas.Sales.Controllers
                 Session.Add(CommonConstants.USER_SESSION, userSession);
                 Session.Add(CommonConstants.SESSION_GROUPID, member.GroupId);
                 Session["member_id"] = member.member_id;
+                Session["group_id"] = member.GroupId;
+                Session["user_name"] = member.name;
+                Session["user_gmail"] = member.username;
                 if (res == 1)
                 {
                     var listCredentials = lg.GetListCredential(username);
